@@ -20,25 +20,39 @@ GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 i=0
 
 try:
-    while True:
+	 while True:
 
-	# Pin 1
-        if GPIO.input(pin1) and not pin1_old:
-		print("ON")
-		kit.motor1.throttle = 1
-		pin1_old = True
-		time.sleep(0.1)
+			 # Mouth
+			 if GPIO.input(pin1) and not pin1_old:
+						 print("ON")
+						 kit.motor3.throttle = 1
+						 pin1_old = True
 
-	if not GPIO.input(pin1) and pin1_old:
-		print("OFF")
-		kit.motor1.throttle = -1
-		pin1_old = False
-		time.sleep(0.1)
+			 if not GPIO.input(pin1) and pin1_old:
+						 print("OFF")
+						 kit.motor3.throttle = -1
+						 pin1_old = False
 
-	kit.motor1.throttle = 0
+			 # Head
+			 if GPIO.input(pin2) and not pin2_old:
+						 print("ON")
+						 kit.motor1.throttle = -1
+						 #time.sleep(0.5)
+						 #kit.motor1.throttle = -1
+						 #time.sleep(0.5)
+						 #kit.motor1.throttle = -1
+						 #time.sleep(0.5)
+						 pin2_old = True
+
+			 if not GPIO.input(pin2) and pin2_old:
+						 print("OFF")
+						 kit.motor1.throttle = 0
+						 pin2_old = False
 
 
-	time.sleep(0.5)
+
+			 time.sleep(0.001)
+
 finally:
-    GPIO.cleanup()
+	 GPIO.cleanup()
 
