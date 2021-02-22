@@ -1,15 +1,13 @@
 # PiFish
 
- # Tail
-                if GPIO.input(pin1) and not pin1_old:
-                                print("ON")
-                                kit.motor2.throttle = 1
-                                pin1_old = True
-                                time.sleep(0.1)
+Pins:
+GPIO#22 -> GPIO#23 LED1 Head
+GPIO#24 -> GPIO#25 LED2 Tail
 
-                if not GPIO.input(pin1) and pin1_old:
-                                print("OFF")
-                                kit.motor2.throttle = -1
-                                pin1_old = False
-                                time.sleep(0.1)
+GPIO#5 -> Button Event
+GPIO#6 -> Sound Sensor Mouth
 
+Motors:
+Motor1: Yellow, Head
+Motor2: Orange, Tail
+Motor3: Blue, Mouth

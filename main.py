@@ -7,52 +7,47 @@ from adafruit_motorkit import MotorKit
 
 kit = MotorKit()
 
-pin1=5
-pin2=6
-
-pin1_old = False
-pin2_old = False
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(pin1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(pin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+#22 LED Active
+#23 Input Active
+GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+#24 LED Recording
+#25 Input Recording
+GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+#5 Button Even (pulled up)
+#6 Sound sensor
+GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
 
 i=0
 
 try:
-	 while True:
+	while True:
+		# HEAD
+		if GPIO.input(23):
+			kit.motor1.throttle = 1
+		else:
+			kit.motor1.throttle = 0
 
-			 # Mouth
-			 if GPIO.input(pin1) and not pin1_old:
-						 print("ON")
-						 kit.motor3.throttle = 1
-						 pin1_old = True
+		# Tail
+		if GPIO.input(25):
+			kit.motor2.throttle = 1
+		else:
+			kit.motor2.throttle = 0
 
-			 if not GPIO.input(pin1) and pin1_old:
-						 print("OFF")
-						 kit.motor3.throttle = -1
-						 pin1_old = False
+		# Mouth
+		if GPIO.input(6):
+			kit.motor3.throttle = 1
+		else:
+			kit.motor3.throttle = -1
 
-			 # Head
-			 if GPIO.input(pin2) and not pin2_old:
-						 print("ON")
-						 kit.motor1.throttle = -1
-						 #time.sleep(0.5)
-						 #kit.motor1.throttle = -1
-						 #time.sleep(0.5)
-						 #kit.motor1.throttle = -1
-						 #time.sleep(0.5)
-						 pin2_old = True
-
-			 if not GPIO.input(pin2) and pin2_old:
-						 print("OFF")
-						 kit.motor1.throttle = 0
-						 pin2_old = False
-
-
-
-			 time.sleep(0.001)
+		time.sleep(0.001)
 
 finally:
-	 GPIO.cleanup()
 
+	 kit.motor1.throttle = 0
+	 kit.motor2.throttle = 0
+	 kit.motor3.throttle = 0
+
+	 GPIO.cleanup()
