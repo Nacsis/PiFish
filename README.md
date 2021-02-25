@@ -5,8 +5,11 @@ Hi,
 some time ago I bought the animatronic fish big mouth billy bass on a flea market. It could could dance and sing "take me to the river" and "don't worry be happy".
 
 Later I stumbled across some interesting projects that hook up animatronics on voice assistants:
+
 https://anotherpiblog.blogspot.com/2017/01/billy-bass-alexa-and-raspberry-pi.html
+
 https://albertarmea.com/post/alexa-tree/
+
 https://www.instructables.com/Animate-a-Billy-Bass-Mouth-With-Any-Audio-Source/
 
 I wanted to try this myself and started this project. I installed AlexaPi on my Raspberry Pi and hooked it up to my fish.
