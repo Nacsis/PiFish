@@ -51,9 +51,12 @@ GPIO#24 -> GPIO#25 LED2 (Tail)
 
 In my code I check GPIO#23 for acitvity and GPIO#25 for recording and then control the Head and Tail movement acordingly.
 
-Further I connected the Button and the mouth sensor:
+Further I connected the Button and the mouth sensor to my raspberry pi, both pulled up to 3.3V:
 GPIO#5 -> Button
 GPIO#6 -> Sound Sensor (Mouth)
+
+I tryed to use the button as event to start Alexa, but i got weird interferences, s.t. when I moved a motor alexa responded. Even, when it shouldn't.
+So I use the button differently and plan to play a random soundfile from a soundboard whenever i press the button.
 
 The motors are hooked up to the motor hat:
 Motor1: Head
