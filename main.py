@@ -38,7 +38,7 @@ try:
 			#print(".")
 			kit.motor2.throttle = 1
 		else:
-			print(".")
+			#print(".")
 			kit.motor2.throttle = 0
 
 		# Mouth
