@@ -35,9 +35,15 @@ try:
 
         time.sleep(0.02)
 
+        if playing:
+            kit.motor1.throttle = 1
+        else:
+            kit.motor1.throttle = 0
+
 
 finally:
     kit.motor2.throttle = 0
+    kit.motor1.throttle = 0
     GPIO.cleanup()
 
 
